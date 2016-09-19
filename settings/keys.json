@@ -1,0 +1,12 @@
+{
+  "maps": {
+    "api": ""
+  },
+  "attractions": {
+    "id": "",
+    "secret": ""
+  },
+  "hotels": {
+    "api": ""
+  }
+}
