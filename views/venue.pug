@@ -1,0 +1,36 @@
+doctype html
+
+html
+    head
+        //- Only include the bare essentials
+        link(rel='stylesheet' href='/stylesheets/venue.css')
+    body.v
+        if venue
+            //- Set background to cover photo
+            #venue(style=background)
+                #cover
+                    h1= venue.name
+                    h3= venue.categories[0].name
+                    .info
+                        each a in venue.location.formattedAddress
+                            .i= a
+                    if venue.rating
+                        .info!= venue.rating + '<sup>/10</sup>' + ' from ' + venue.ratingSignals + ' ratings'
+                    if venue.hours
+                        .info
+                            each h in venue.hours.timeframes
+                                .i= 'Open ' + h.days + ', ' + h.open[0].renderedTime
+                    if venue.contact.formattedPhone
+                        .info= venue.contact.formattedPhone
+                    if venue.contact.twitter
+                        .info
+                            a(target='_blank' href='https://twitter.com/' + venue.contact.twitter)= '@' + venue.contact.twitter
+                    if venue.url
+                        .info
+                            a(target='_blank' href=venue.url)= venue.url
+                    .info
+                        a(target='_blank' href=venue.canonicalUrl)= 'View on Foursquare'
+
+        //- Display error message to user
+        if message
+                h2#error= message

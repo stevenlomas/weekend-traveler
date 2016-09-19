@@ -1,0 +1,65 @@
+// SCSS for venue.pug
+// Author Steven Lomas, n8578443
+
+$data-width: 350px
+
+html, body
+  height: 100%
+  margin: 0
+  padding: 0
+body
+  min-width: 768px
+  min-height: 400px
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+.v
+  min-width: $data-width
+  max-width: $data-width
+  min-height: 350px
+
+a
+  color: #00B7FF
+  font-weight: bold
+  cursor: pointer
+
+// Venue information container
+#venue
+  width: $data-width
+  background: #EEE
+  background-size: cover
+  overflow-x: hidden
+  overflow-y: scroll
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+  color: #222
+  word-wrap: break-word
+  #cover
+    background: rgba(255, 255, 255, 0.8)
+    padding: 1em
+    margin: 0
+    min-height: 350px
+    box-sizing: border-box
+    h1
+      margin: 0
+      padding: 0
+    h3
+      margin: 0 0 0.5em 0
+    .info
+      font-size: 18px
+      padding: 0.5em 0
+      border-top: 1px dashed #AAA
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      .i
+        white-space: normal
+      sup
+        top: -0.25em
+
+// Client error message
+#error
+  color: #222
+  padding: 1em
+  margin: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap

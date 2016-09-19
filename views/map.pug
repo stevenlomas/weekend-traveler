@@ -1,0 +1,75 @@
+extends layout
+
+block content
+    //- Google Maps Javascript with create map callback
+    script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tihgk_rt7lUN_gLeLzceu93hmrtyyQY&libraries=drawing&callback=createMap" async defer)
+    #data
+        #trip
+            //- Trip data
+            .name= map.start_address + ' to ' + map.end_address
+            .distance= map.distance.text + ': ' + map.duration.text
+            .date= 'Arriving ' + check_in
+            .date= 'Departing ' + check_out
+            a.newtrip(href='/')= 'New Trip'
+
+        #information
+            h2= 'Found ' + (attractions.length > 0 ? attractions.length : 'no') + ' attractions'
+            #attractions
+                if attractionNodes > 0
+                    .info= 'With ' + attractionNodes + (attractionNodes > 1 ? ' rest stops' : ' rest stop')
+                //- Attraction list
+                each attraction, a in attractions
+                    .attraction&attributes({
+                        'id': 'a' + a,
+                        'data-lat': attraction.venue.location.lat,
+                        'data-lng': attraction.venue.location.lng,
+                        'data-name': attraction.venue.name,
+                        'data-id': attraction.venue.id
+                    })
+                        h3= attraction.venue.name
+                        div= attraction.venue.categories[0].name
+                        if attraction.venue.location.address
+                            div= 'Address: ' + attraction.venue.location.address
+                        if attraction.venue.location.city
+                            div= 'City: ' + attraction.venue.location.city
+                        .more= 'More'
+
+            h2= 'Found ' + (hotels.length > 0 ? hotels.length : 'no') + ' hotels'
+            #hotels
+                if hotelNodes > 0
+                    .info= hotelNodes + (hotelNodes > 1 ? ' rest stops' : ' rest stop')
+                //- Hotel list
+                each hotel, h in hotels
+                    .hotel&attributes({
+                        'id': 'h' + h,
+                        'data-lat': hotel.location.latitude,
+                        'data-lng': hotel.location.longitude,
+                        'data-name': hotel.property_name
+                    })
+                        h3= hotel.property_name
+                        div= 'Address: ' + hotel.address.line1 + ', ' + hotel.address.city
+                        each c in hotel.contacts
+                            if c.type == 'URL'
+                                div= 'Website: '
+                                    a(href='http://' + c.detail)= c.detail
+                            else if c.type == 'EMAIL'
+                                div= 'Email: '
+                                a(href='mailto:' + c.detail)= c.detail
+                            else
+                                div= c.type + ': ' + c.detail
+                        div= 'Daily Rate: ' + hotel.min_daily_rate.amount + ' ' + hotel.min_daily_rate.currency
+
+    //- Map container
+    #map_canvas&attributes({
+        'data-start': map.start_address,
+        'data-end': map.end_address,
+        'data-lat': center.lat,
+        'data-lng': center.lng
+    })
+
+    //- Extended venue information iframe
+    iframe#venue_container(src='javascript:false;' sandbox='allow-popups allow-scripts allow-same-origin')
+    #venue_closer
+
+    //- Site credits
+    #header!= 'Weekend Traveler<br>Steven Lomas<br>n8578443'

@@ -1,0 +1,62 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+body {
+  min-width: 768px;
+  min-height: 400px;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+.v {
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 350px; }
+
+a {
+  color: #00B7FF;
+  font-weight: bold;
+  cursor: pointer; }
+
+#venue {
+  width: 350px;
+  background: #EEE;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #222;
+  word-wrap: break-word; }
+  #venue #cover {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1em;
+    margin: 0;
+    min-height: 350px;
+    box-sizing: border-box; }
+    #venue #cover h1 {
+      margin: 0;
+      padding: 0; }
+    #venue #cover h3 {
+      margin: 0 0 0.5em 0; }
+    #venue #cover .info {
+      font-size: 18px;
+      padding: 0.5em 0;
+      border-top: 1px dashed #AAA;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+      #venue #cover .info .i {
+        white-space: normal; }
+      #venue #cover .info sup {
+        top: -0.25em; }
+
+#error {
+  color: #222;
+  padding: 1em;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+/*# sourceMappingURL=venue.css.map */

@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    #content
+        h1.title= title
+        h2.subtitle Plan your weekend
+        form(action='map' method='post' enctype='application/x-www-form-urlencoded').search
+            h3.heading Trip Directions
+            p.directions
+                - var place='[\\w\\s]{3,30}'
+                label #[input(type='text' name='origin' placeholder='Sydney' pattern=place title='Place name' required)]
+                label to #[input(type='text' name='destination' placeholder='Canberra' pattern=place title='Place name' required)]
+            .attractions
+                h3.heading Attractions
+                .icon
+            p.section
+                label #[input(type='radio' name='section' value='' checked)] All
+                label #[input(type='radio' name='section' value='arts')] Arts
+                label #[input(type='radio', name='section', value='food')] Food
+                label #[input(type='radio', name='section', value='drinks')] Drinks
+                label #[input(type='radio', name='section', value='coffee')] Coffee
+                label #[input(type='radio', name='section', value='outdoors')] Outdoors
+                label #[input(type='radio', name='section', value='shops')] Shops
+                label #[input(type='radio', name='section', value='sights')] Sights
+                label #[input(type='radio', name='section', value='topPicks')] Top Picks
+            //- TODO: Validate inputs for hotel check_in and check_out dates
+            .hotels
+                h3.heading Hotels
+                .icon
+            p.checking
+                label Arrive #[input(type='date' name='check_in' min='2016-09-20' max='2017-12-30' placeholder='2016-09-20' required)]
+                label Depart #[input(type='date' name='check_out' min='2016-09-21' max='2017-12-31' placeholder='2016-09-21' required)]
+                label Max Daily Rate #[input(type='number' name='max_rate' min='100' max='500' value='500' required)]
+            p.amenities
+                label #[input(type='checkbox', name='amenities', value='COFFEE_SHOP')] Coffee Shop
+                label #[input(type='checkbox', name='amenities', value='GYM')] Gym
+                label #[input(type='checkbox', name='amenities', value='LAUNDRY')] Laundry
+                label #[input(type='checkbox', name='amenities', value='PARKING')] Parking
+                label #[input(type='checkbox', name='amenities', value='PETS_ALLOWED')] Pets Allowed
+                label #[input(type='checkbox', name='amenities', value='POOL')] Pool
+                label #[input(type='checkbox', name='amenities', value='RESTAURANT')] Restaurant
+            p.submit
+                input(type='submit' value='Search')
+
+    #footer!= 'Steven Lomas<br>n8578443'
+
+    //- Display error message to user
+    if message
+            h2#message= message

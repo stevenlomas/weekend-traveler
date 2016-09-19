@@ -1,0 +1,22 @@
+{
+  "name": "weekend-traveler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Weekend Traveler",
+  "author": "Steven Lomas, n8578443",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "node-sass-middleware": "0.9.8",
+    "pug": "^2.0.0-beta6",
+    "serve-favicon": "~2.3.0",
+    "async": "2.0.1",
+    "request": "2.74.0"
+  }
+}
